@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Rendering with React | React Zines</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- TODO: Update the icon image if you want to get fancy! -->
+<link rel="icon" type="image/png" href="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-machine-32.png" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="prism.css" />
+
+<meta name="Description" content="How React take a function and turns it into what you see on the screen! Print me and keep me by your side!" />
+<meta name="theme-color" content="#087EA4" />
+<main class="zine">
+  <header class="zine-page page-1">
+    <h1>Rendering with React</h1>
+    <p>How React "prints" UI to your screen!</p>
+  </header>
+  <section class="zine-page page-2">
+    <h2>What's a render?</h2>
+    <p>In React, function components are, well, functions!</p>
+<pre><code class="lang-jsx">function News() {
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;What is a 'zine'?&lt;/h1&gt;
+      &lt;p&gt;A zine is a mini mag.&lt;/p&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+    <p>When react "renders" a function component, it <strong>executes the function</strong> and gets a UI tree in return. On the Web, that UI Tree is a collection of DOM nodes.</p>
+  </section>
+  <section class="zine-page page-3">
+    <h2>Initial Render</h2>      
+    <p>To take a component from a function to your screen, 
+    React must first <strong>render</strong> it by calling <code>ReactDOM.render()</code> 
+    on your root component and the target DOM node: </p>
+    <pre><code class="lang-jsx">ReactDOM.render(
+  &lt;News /&gt;,
+  document.getElementById('root')
+);</code></pre>
+  </section>
+  <section class="zine-page page-4">
+    <h2>Commit</h2>
+    <p>After React renders your component(s), it will update the DOM to reflect the UI tree. This is called the <strong>Commit Phase</strong>.</p>
+    <p>The UI Tree rendered from <code><News /></code> will be committed to the root element like so:</p>
+    <pre><code class="lang-html">&lt;div id='root'&gt;
+  &lt;article&gt;
+    &lt;h1&gt;What is a 'zine'?&lt;/h1&gt;
+    &lt;p&gt;A zine is a mini mag.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+  </section>
+  <section class="zine-page page-5">
+    <h2>Browser paint</h2>
+    <p>When React updates the DOM, the browser repaints the screen to reflect these updates. Now you can see your component!</p>
+    <img src="images/i_browser-paint.png" alt="The browser is a painter, painting the news story into your screen ala Bob Ross." />
+  </section>
+  <section class="zine-page page-6">
+    <h2>Reacting to users with a new Render</h2>
+    <p>If you're making something interactive, you'll need to change how the UI looks in response to 
+      user actions like submitting forms or dragging and dropping!</p>
+    <p>To update the UI in response to user input, you can tell React to <strong>re-render</strong> a component!</p>
+  </section>
+  <section class="zine-page page-7">
+    <h2>Re-rendering with <code>setState()</code></h2>
+    <p>Setting a component's state with <code>setState()</code>* tells React to change the component's state and queues another render—a <strong>re-render</strong>!</p>
+    <p>During the Commit phase after re-rendering a component, React will compare the previous render's UI tree to the new one and only update the bits that have changed!</p>
+    <small>*See <i>Stately State</i> zine.</small>
+  </section>
+  <footer class="zine-page page-8">
+    <p>Made with love to commemorate React's new docs in 2021 <3</p>
+    <p>Learn more about Render and Commit at <a href="https://beta.reactjs.org/learn/render-and-commit">beta.reactjs.org/learn/render-and-commit</a></p>
+  </footer>
+  <aside>
+    <h1>Make your own zine!</h1>
+    <p><button class="print_button">Print me!</button> Then <a href-"https://www.youtube.com/watch?v=cQ7UmxmU5gE&ab_channel=AdamJ.Kurtz" target="_blank">fold me into a mini-magazine</a>, and keep me by your side while working!</p>
+  </aside>
+</main>
+  
+<script src="script.js"></script>
+<script src="prism.js"></script>
